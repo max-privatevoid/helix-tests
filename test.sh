@@ -12,7 +12,7 @@ rm -rf work/
 mkdir -p work
 export TEMP_HOME="$(mktemp -d)"
 export HOME="$TEMP_HOME"
-for tst in attr let-in-attr list list2; do
+for tst in attr let let-in let-in-attr list list2; do
   echo TESTING: $tst
   cp input/$tst.nix work/$tst.nix
   $test_tmux new-session -d hx work/$tst.nix
