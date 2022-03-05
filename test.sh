@@ -1,4 +1,4 @@
-#!/usr/bin/env -S nix shell tmux bash -c bash
+#!/usr/bin/env -S nix shell bash tmux coreutils diffutils findutils -c bash
 test_tmux="tmux -S /tmp/helix-tmux-test-$(id -u)-$$"
 
 sk() {
@@ -12,7 +12,7 @@ rm -rf work/
 mkdir -p work
 export TEMP_HOME="$(mktemp -d)"
 export HOME="$TEMP_HOME"
-for tst in attr let let-in let-in-attr list list2; do
+for tst in $(find commands -type f -exec basename {} \;); do
   echo TESTING: $tst
   cp input/$tst.nix work/$tst.nix
   $test_tmux new-session -d hx work/$tst.nix
