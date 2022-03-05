@@ -1,4 +1,4 @@
-#!/usr/bin/env -S nix shell bash tmux coreutils diffutils findutils -c bash
+#!/usr/bin/env -S nix shell --override-flake pkgs github:NixOS/nixpkgs/3e072546ea98db00c2364b81491b893673267827 pkgs#bash pkgs#tmux pkgs#coreutils pkgs#diffutils pkgs#findutils -c bash
 test_tmux="tmux -S /tmp/helix-tmux-test-$(id -u)-$$"
 DELAY=${DELAY:-0.1}
 
